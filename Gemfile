@@ -8,6 +8,7 @@ group :development, :test do
   gem 'dm-postgres-adapter'
   gem 'database_cleaner'
   gem 'byebug'
+  gem 'bcrypt-ruby'
   gem 'capybara'
   gem 'cucumber'
   gem 'launchy'
