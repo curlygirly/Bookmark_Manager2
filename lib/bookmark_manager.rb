@@ -3,6 +3,7 @@ require 'data_mapper'
 require_relative 'link'
 require_relative 'tag'
 require_relative 'user'
+require_relative 'data_mapper_setup'
 require 'rack-flash'
 
 env = ENV[ 'RACK_ENV'] || 'development'
