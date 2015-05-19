@@ -6,12 +6,6 @@ require_relative 'user'
 require_relative 'data_mapper_setup'
 require 'rack-flash'
 
-env = ENV[ 'RACK_ENV'] || 'development'
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
-
-DataMapper.finalize
-DataMapper.auto_upgrade!
-
 class BookmarkManager < Sinatra::Base
 
   enable :sessions
@@ -70,6 +64,21 @@ class BookmarkManager < Sinatra::Base
     end
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions' do
+    email, password = params[:email], params[:password]
+    user = User.authenticate(email,password)
+    if user
+      session[:user_id] = user.id
+      redirect to('/')
+    else
+      flash[:errors] = ['The email or password is incorrect']
+      erb :'sessions/new'
+    end
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0
