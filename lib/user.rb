@@ -11,12 +11,10 @@ class User
 
       validates_uniqueness_of :email
       property :email, String, unique: true
-
       validates_confirmation_of :password
 
 
     property :id, Serial
-    property :email, String
     property :password_digest, Text
 
 
