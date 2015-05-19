@@ -10,6 +10,7 @@ class BookmarkManager < Sinatra::Base
 
   enable :sessions
   use Rack::Flash
+  use Rack::MethodOverride
 
   post '/set-flash' do
     flash[:notice] = "Thanks for signing up!"
@@ -80,6 +81,11 @@ class BookmarkManager < Sinatra::Base
     end
   end
 
+  delete '/sessions' do
+    flash[:notice] = 'Good bye!'
+    session[:user_id] = nil
+    redirect to('/')
+  end
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
