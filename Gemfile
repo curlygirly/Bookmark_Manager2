@@ -15,5 +15,6 @@ group :development, :test do
   gem 'rspec'
   gem 'shotgun'
   gem 'rack-flash3'
+  gem 'sinatra-partial'
 
 end
