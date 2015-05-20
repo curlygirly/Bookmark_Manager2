@@ -1,7 +1,7 @@
 env = ENV[ 'RACK_ENV'] || 'development'
 
-DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
+DataMapper.setup(:default, ENV['DATABASE_URL'] ||"postgres://localhost/bookmark_manager_#{env}")
+# Saying set up with local DB like in test r go to remote DB set up with Heroku
 
 DataMapper.finalize
 
-# Why we creating this file and why wasn't it mentioned in the tutorial?
