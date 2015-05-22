@@ -20,3 +20,4 @@
     session[:user_id] = nil
     redirect to('/')
   end
+
