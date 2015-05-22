@@ -10,6 +10,7 @@ source "https://rubygems.org"
   gem 'launchy'
   gem 'rack-flash3'
   gem 'sinatra-partial'
+  gem 'rest-client'
 
 group :development, :test do
   gem 'create_awesome_readme'
